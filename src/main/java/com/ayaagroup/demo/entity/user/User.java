@@ -6,10 +6,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.sql.Date;
 import java.util.HashSet;
@@ -25,11 +22,13 @@ import java.util.Set;
         @UniqueConstraint(columnNames = "user_name")
     })
 
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Builder
+@AllArgsConstructor
 public class User {
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
     private Integer userId;
 
@@ -46,6 +45,8 @@ public class User {
     @Size(max = 120)
     private String userPass;
 
+
+
 //    @ManyToMany(fetch = FetchType.LAZY)
 //    @JoinTable(name = "user_roles",
 //            joinColumns = @JoinColumn(name = "user_id"),
@@ -54,17 +55,15 @@ public class User {
 
 
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "userEntity1")
-    private List<UserAddress> userAddress;
-
-    @JsonManagedReference
-    @OneToMany(mappedBy = "userEntity")
-    private List<UserContact> userContacts;
-
-    @JsonManagedReference
-    @OneToOne(mappedBy = "user")
-    private Patient patient;
-
-
+//    @JsonManagedReference
+//    @OneToMany(mappedBy = "userEntity1")
+//    private List<UserAddress> userAddress;
+//
+//    @JsonManagedReference
+//    @OneToMany(mappedBy = "userEntity")
+//    private List<UserContact> userContacts;
+//
+//    @JsonManagedReference
+//    @OneToOne(mappedBy = "user")
+//    private Patient patient;
 }

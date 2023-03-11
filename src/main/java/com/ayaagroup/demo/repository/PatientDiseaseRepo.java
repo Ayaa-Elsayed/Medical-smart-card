@@ -11,6 +11,6 @@ import java.util.Optional;
 public interface PatientDiseaseRepo extends JpaRepository<PatientDiseaseEntity,Integer> {
    Optional<PatientDiseaseEntity> findDiseaseNotesByPdId(Integer pdId);
 
-   List<PatientDiseaseEntity> findDiseaseNotesByPdId(Integer pdId);
+   //List<PatientDiseaseEntity> findDiseaseNotesByPdId(Integer pdId);
 
 }
